@@ -24,7 +24,7 @@ pipeline {
             }
         }
 
-         stage('setup ansible') {
+         stage('run ansible playbook') {
             steps {
                 sh '''
                     ansible --version
