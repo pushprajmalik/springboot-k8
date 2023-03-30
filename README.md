@@ -1,15 +1,4 @@
 
-# Project Title
-
-CI CD pipeline for spring boot project for mac OS using jenkins, maven, ansible, docker & kubernetes
-
-
-
-## Authors
-
-- [Vikram Sisodia](https://www.github.com/vikramsisodia27)
-
-
 ## Pre-requestics
 
 Install openjdk@8 using brew
@@ -38,13 +27,39 @@ Install Ansible using brew
 
 Install Jenkins in mac
 ```bash
+ // Install the latest LTS version
  brew install jenkins-lts
+
+ // Start the Jenkins service
+ brew services start jenkins-lts
 ```
 
 Install Minikube in mac
 
 ```bash
-  https://medium.com/@javatechie/kubernetes-tutorial-install-run-minikube-in-mac-os-k8s-cluster-369b25b0c3f0
+  // Install kubectl
+  brew install kubectl
+
+  // Check kubectl version
+  kubectl version
+
+  // Install hyperkit
+  brew install hyperkit
+
+  // Verify that you installed kubectl & HyperKit
+  brew list
+
+  // Install Minikube on macOS
+  brew install minikube
+
+  // Verify minikube version
+  minikube version
+
+  // Start minikube server
+  minikube start
+
+  // Check minikube server running status
+  minikube status
 ```
 
 Install & Run Docker in Mac
@@ -57,6 +72,7 @@ Install & Run Docker in Mac
 
 Start Jenkins
 ```bash
+ // Start jenkin server if not running
  brew services start jenkins-lts  
 
  open localhost:8080 
@@ -64,13 +80,14 @@ Start Jenkins
  Note: install all default plugins
 
 ```
-find, install & enable required Ansible plugin
+Goto : Manage Jenkins > Plugins
 
 ```bash
+// Install & enable Ansible plugin
 Ansible plugin 
 ```
 
-find, install & enable required docker plugin
+// Install & enable Docker plugins
 
 ```bash
 CloudBees Docker Build and Publish plugin
@@ -79,7 +96,10 @@ Docker plugin
 docker-build-step
 
 Note: Please refer to setup docker with Jenkins for mac
-https://harshityadav95.medium.com/how-to-setup-docker-in-jenkins-on-mac-c45fe02f91c5
+
+[setup docker with Jenkins for mac](https://harshityadav95.medium.com/how-to-setup-docker-in-jenkins-on-mac-c45fe02f91c5)
+
+
 ```
 find, install & enable Maven  plugin
 
