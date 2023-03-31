@@ -87,9 +87,10 @@ Goto : Manage Jenkins > Plugins
 Ansible plugin 
 ```
 
-// Install & enable Docker plugins
+
 
 ```bash
+// Install & enable Docker plugins
 CloudBees Docker Build and Publish plugin
 Docker Pipeline
 Docker plugin 
@@ -97,16 +98,15 @@ docker-build-step
 
 Note: Please refer to setup docker with Jenkins for mac
 
-[setup docker with Jenkins for mac](https://harshityadav95.medium.com/how-to-setup-docker-in-jenkins-on-mac-c45fe02f91c5)
-
-
+[setup docker with Jenkins for mac]
+(https://harshityadav95.medium.com/how-to-setup-docker-in-jenkins-on-mac-c45fe02f91c5/)
 ```
-find, install & enable Maven  plugin
 
 ```bash
+// Install & enable Maven plugins
 Maven Integration plugin
 ```
-Goto Manage Jenkins>Global Tool Configuration
+Goto Manage Jenkins > Global Tool Configuration
 ```bash
 Setup JDK, Maven, Ansible, Docker
 

@@ -24,6 +24,17 @@ pipeline {
             }
         }
 
+        stage('Push image to Hub'){
+                            steps{
+                                script{
+                                   withCredentials([string(credentialsId: 'docker_password_id', variable: 'docker_password')]) {
+                                      sh 'docker login -u vikramsisodia27 -p ${docker_password}'
+                                   }
+                                   sh 'docker push vikramsisodia27/springboot-k8:latest'
+                                }
+                            }
+                        }
+
          stage('Run ansible playbook') {
             steps {
                 sh '''
