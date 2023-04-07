@@ -113,3 +113,18 @@ Setup JDK, Maven, Ansible, Docker
 ```
 
 ## Create CI-CD using Jenkins
+
+1. create a new item with name (pipeline)
+
+2. under general
+select 'GitHub project'
+https://github.com/vikramsisodia27/springboot-k8/
+
+3. Build Trigger
+select 'GitHub hook trigger for GITScm polling'
+
+4. pipeline
+Refer code repo and copy jenkinsfile 
+
+5. save and build now
+
