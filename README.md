@@ -131,13 +131,8 @@ Refer code repo and copy jenkinsfile
 ## Access application in kubernetes
 
 ```bash
-// get kubernetes deployments
-
+ // get kubernetes deployments
  kubectl get deployments
- 
- // get kubernetes service
- 
- kubectl get service
  
  // kubernetes pods
  kubectl get pods
@@ -148,8 +143,11 @@ Refer code repo and copy jenkinsfile
  // get nodes
  kubectl get nodes
  
+ // get kubernetes service
+ kubectl get service
+ 
  // get service url 
- minikube service springboot-k8s-svc  --url
+ minikube service 'name_of_service'  --url
 
  
  
