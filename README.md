@@ -128,3 +128,29 @@ Refer code repo and copy jenkinsfile
 
 5. save and build now
 
+## Access application in kubernetes
+
+```bash
+// get kubernetes deployments
+
+ kubectl get deployments
+ 
+ // get kubernetes service
+ 
+ kubectl get service
+ 
+ // kubernetes pods
+ kubectl get pods
+ 
+ // check log on pods
+ kubectl logs pod_name
+ 
+ // get nodes
+ kubectl get nodes
+ 
+ // get service url 
+ minikube service springboot-k8s-svc  --url
+
+ 
+ 
+```
