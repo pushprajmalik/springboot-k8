@@ -20,7 +20,7 @@ pipeline {
 
          stage('Create Docker Image') {
             steps {
-             sh "docker build -t vikramsisodia27/springboot-k8 ."
+             sh "docker build -t ${docker_username}/springboot-k8 ."
             }
         }
 
@@ -28,7 +28,7 @@ pipeline {
                             steps{
                                 script{
                                    withCredentials([string(credentialsId: 'docker_password_id', variable: 'docker_password')]) {
-                                      sh 'docker login -u vikramsisodia27 -p ${docker_password}'
+                                      sh 'docker login -u ${docker_username} -p ${docker_password}'
                                    }
                                    sh 'docker push vikramsisodia27/springboot-k8:latest'
                                 }
