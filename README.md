@@ -68,6 +68,34 @@ Install & Run Docker in Mac
  https://docs.docker.com/desktop/install/mac-install/
 ```
 
+## Configure kubernetes to load image from docker hub
+
+
+```bash
+ // Log in to Docker Hub
+
+ docker login
+ // create secret 
+ 
+ // View the config.json file
+ cat ~/.docker/config.json
+ 
+ // Create a Secret based on existing credentials
+  kubectl create secret generic regcred \
+    --from-file=.dockerconfigjson=<path/to/.docker/config.json> \
+    --type=kubernetes.io/dockerconfigjson
+  
+  // (Optional)Create a Secret by providing credentials on the command line   
+    kubectl create secret docker-registry regcred --docker-server=<your-registry-server> --docker-username=<your-name> --docker-password=<your-pword> --docker-email=<your-email>
+ 
+ // Inspecting the Secret regcred    
+ kubectl get secret regcred --output=yaml
+ 
+ // refer to doployment.yaml to see how above mentioned secret regcred is used
+ deployment.yaml
+```
+
+
 ## Configure required setup for Jenkins
 
 Start Jenkins
