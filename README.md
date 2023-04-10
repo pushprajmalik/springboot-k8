@@ -1,5 +1,6 @@
+## run spring boot application using Jenkins, Maven, Ansible,Docker & Kubernetes in macbook
 
-## Pre-requestics
+## Prerequisite
 
 Install openjdk@8 using brew
 
