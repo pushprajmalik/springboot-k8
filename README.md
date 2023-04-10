@@ -27,38 +27,50 @@ Install Ansible using brew
 
 Install Jenkins in mac
 ```bash
- // Install the latest LTS version
  brew install jenkins-lts
 
- // Start the Jenkins service
  brew services start jenkins-lts
 ```
 
 Install Minikube in mac
 
+1. Install kubectl
 ```bash
-  // Install kubectl
   brew install kubectl
+```
 
-  // Check kubectl version
+2. Check kubectl version
+```bash
   kubectl version
+```
 
-  // Install hyperkit
+3. Install hyperkit
+```bash
   brew install hyperkit
+```
 
-  // Verify that you installed kubectl & HyperKit
+4. Verify that you installed kubectl & HyperKit
+```bash
   brew list
+```
 
-  // Install Minikube on macOS
+5. Install Minikube on macOS
+```bash
   brew install minikube
+```
 
-  // Verify minikube version
+6. Verify minikube version
+```bash
   minikube version
+```
 
-  // Start minikube server
+7. Start minikube server
+```bash
   minikube start
+```
 
-  // Check minikube server running status
+8. Check minikube server running status
+```bash
   minikube status
 ```
 
@@ -68,76 +80,74 @@ Install & Run Docker in Mac
  https://docs.docker.com/desktop/install/mac-install/
 ```
 
-## Configure kubernetes to load image from docker hub
+## Configure kubernetes to pull image from private repo
 
 
+
+1. Log in to Docker Hub
 ```bash
- // Log in to Docker Hub
-
  docker login
- // create secret 
- 
- // View the config.json file
+```
+
+2. View the config.json file
+ ```bash
  cat ~/.docker/config.json
+ ```
  
- // Create a Secret based on existing credentials
+3. Create a Secret based on existing credentials
+ ```bash
   kubectl create secret generic regcred \
     --from-file=.dockerconfigjson=<path/to/.docker/config.json> \
     --type=kubernetes.io/dockerconfigjson
-  
-  // (Optional)Create a Secret by providing credentials on the command line   
+ ```
+
+4. (Optional)Create a Secret by providing credentials on the command line   
+ ```bash
     kubectl create secret docker-registry regcred --docker-server=<your-registry-server> --docker-username=<your-name> --docker-password=<your-pword> --docker-email=<your-email>
- 
- // Inspecting the Secret regcred    
+ ```
+
+5. Inspecting the Secret regcred  
+ ```bash
  kubectl get secret regcred --output=yaml
+ ```
  
- // refer to doployment.yaml to see how above mentioned secret regcred is used
- deployment.yaml
-```
+6. refer to doployment.yaml to see how secret is used
+
 
 
 ## Configure required setup for Jenkins
 
-Start Jenkins
+start jenkins server if not running
 ```bash
- // Start jenkin server if not running
  brew services start jenkins-lts  
-
- open localhost:8080 
-
- Note: install all default plugins
-
+ Note: open localhost:8080 
 ```
-Goto : Manage Jenkins > Plugins
 
+install & enable Ansible plugin
 ```bash
-// Install & enable Ansible plugin
 Ansible plugin 
 ```
 
-
-
+install & enable Docker plugins
 ```bash
-// Install & enable Docker plugins
 CloudBees Docker Build and Publish plugin
 Docker Pipeline
 Docker plugin 
 docker-build-step
-
 Note: Please refer to setup docker with Jenkins for mac
 
-[setup docker with Jenkins for mac]
+[setup docker with Jenkins on mac]
 (https://harshityadav95.medium.com/how-to-setup-docker-in-jenkins-on-mac-c45fe02f91c5/)
 ```
 
+install & enable Maven plugins
 ```bash
-// Install & enable Maven plugins
 Maven Integration plugin
 ```
-Goto Manage Jenkins > Global Tool Configuration
+
+Global Tool Configuration
 ```bash
 Setup JDK, Maven, Ansible, Docker
-
 ```
 
 ## Create CI-CD using Jenkins
@@ -158,25 +168,32 @@ Refer code repo and copy jenkinsfile
 
 ## Access application in kubernetes
 
+get kubernetes deployments
 ```bash
- // get kubernetes deployments
  kubectl get deployments
- 
- // kubernetes pods
- kubectl get pods
- 
- // check log on pods
- kubectl logs pod_name
- 
- // get nodes
- kubectl get nodes
- 
- // get kubernetes service
- kubectl get service
- 
- // get service url 
- minikube service 'name_of_service'  --url
+``` 
 
- 
- 
-```
+kubernetes pods
+ ```bash
+ kubectl get pods
+ ``` 
+
+check log on pods
+ ```bash
+ kubectl logs pod_name
+ ``` 
+
+get nodes
+ ```bash
+ kubectl get nodes
+ ``` 
+
+get kubernetes service
+ ```bash
+ kubectl get service
+ ``` 
+
+get service url 
+ ```bash
+ minikube service 'name_of_service'  --url
+ ```
