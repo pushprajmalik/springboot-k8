@@ -175,7 +175,7 @@ get kubernetes deployments
 ```
 edit kubernetes deployments
 ```bash
- kubectl edit deployments
+ kubectl edit deployments deployment-name
 ``` 
 
 kubernetes pods
