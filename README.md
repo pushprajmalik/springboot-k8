@@ -172,6 +172,10 @@ Refer code repo and copy jenkinsfile
 get kubernetes deployments
 ```bash
  kubectl get deployments
+```
+edit kubernetes deployments
+```bash
+ kubectl edit deployments
 ``` 
 
 kubernetes pods
