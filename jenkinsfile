@@ -11,7 +11,7 @@ pipeline {
         stage('Build Maven') {
             steps {
                 // Get some code from a GitHub repository
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/vikramsisodia27/springboot-k8']])
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/pushprajmalik/springboot-k8']])
 
                 // Run Maven on a Unix agent.
                 sh "mvn clean install"
@@ -20,7 +20,7 @@ pipeline {
 
          stage('Create Docker Image') {
             steps {
-             sh "docker build -t ${docker_username}/springboot-k8 ."
+             sh "docker build -t pushprajmalik@gmail.com/springboot-k8 ."
             }
         }
 
@@ -28,20 +28,13 @@ pipeline {
                             steps{
                                 script{
                                    withCredentials([string(credentialsId: 'docker_password_id', variable: 'docker_password')]) {
-                                      sh 'docker login -u ${docker_username} -p ${docker_password}'
+                                      sh 'docker login -u pushprajmalik@gmail.com -p Apple@123'
                                    }
-                                   sh 'docker push ${docker_username}/springboot-k8:latest'
+                                   sh 'docker push pushprajmalik@gmail.com/springboot-k8:latest'
                                 }
                             }
                         }
 
-         stage('Run ansible playbook') {
-            steps {
-                sh '''
-                    ansible --version
-                    ansible-playbook ansible.yml
-                 '''
-            }
-        }
+         
     }
 }
