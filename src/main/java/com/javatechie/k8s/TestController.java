@@ -10,5 +10,5 @@ public class TestController {
     public String displayMessage(){
         return "hello to kubernetes !!";
     }
-    System.out.println("pushpraj")
+
 }
