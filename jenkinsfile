@@ -19,7 +19,7 @@ pipeline {
 
         stage('Create Docker Image') {
             steps {
-                bat "docker build -t pushprajmalik@gmail.com/springboot-k8 ."
+                bat "docker build -t pushprajmalik/springboot-k8 ."
             }
         }
 
