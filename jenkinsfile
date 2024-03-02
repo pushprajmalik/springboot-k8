@@ -4,37 +4,32 @@ pipeline {
     tools {
         // Install the Maven version configured as "M3" and add it to the path.
         maven "maven"
-
     }
 
     stages {
         stage('Build Maven') {
             steps {
                 // Get some code from a GitHub repository
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/pushprajmalik/springboot-k8']])
+                checkout scm: [$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/pushprajmalik/springboot-k8']]]
 
-                // Run Maven on a Unix agent.
-                sh "mvn clean install"
+                // Run Maven on a Windows agent.
+                bat "mvn clean install"
             }
         }
 
-         stage('Create Docker Image') {
+        stage('Create Docker Image') {
             steps {
-             sh "docker build -t pushprajmalik@gmail.com/springboot-k8 ."
+                bat "docker build -t pushprajmalik@gmail.com/springboot-k8 ."
             }
         }
 
-        stage('Push image to Hub'){
-                            steps{
-                                script{
-                                   withCredentials([string(credentialsId: 'docker_password_id', variable: 'docker_password')]) {
-                                      sh 'docker login -u pushprajmalik@gmail.com -p Apple@123'
-                                   }
-                                   sh 'docker push pushprajmalik@gmail.com/springboot-k8:latest'
-                                }
-                            }
-                        }
-
-         
+        stage('Push image to Hub') {
+            steps {
+                withCredentials([string(credentialsId: 'docker_password_id', variable: 'docker_password')]) {
+                    bat 'docker login -u pushprajmalik@gmail.com -p Apple@123'
+                }
+                bat 'docker push pushprajmalik@gmail.com/springboot-k8:latest'
+            }
+        }
     }
 }
